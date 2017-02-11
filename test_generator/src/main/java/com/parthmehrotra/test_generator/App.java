@@ -28,15 +28,15 @@ public class App {
 
 		@Override
 		public void visit(MethodDeclaration n, Object arg) {
-			n.accept(new IfVisitor(), null);
-			System.out.println("ran accept");
+			System.out.println(n.getName());
+			new IfVisitor().visit(n, "Hello");
 		}
 	}
 
 	private static class IfVisitor extends VoidVisitorAdapter {
 		@Override
 		public void visit(IfStmt n, Object arg) {
-			System.out.println("Visited");
+			System.out.println(arg);
 			System.out.println(n);
 		}
 	}
